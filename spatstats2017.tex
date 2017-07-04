@@ -3,18 +3,20 @@
 \usepackage[scaled=0.9]{helvet}
 \usepackage{courier}
 \usetheme{CambridgeUS}
+\usecolortheme{rose}
 \usepackage{textpos}
 \usepackage{calc}
 \graphicspath{{figures/}}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{tikz}
+\usepackage{animate}
 
-
-
-
-\title[Biospytial: a Graph Based Engine] % (optional, only for long titles)
+\title[{\includegraphics[scale=0.1]{biospytial.png}} a Graph Based Engine] % (optional, only for long titles)
 {Introducing {\em Biospytial} }
-\subtitle{An Open Source graph-based computing framework for managing and modeling spatial ecological data}
-\author[Juan Escamilla Molgora] % (optional, for multiple authors)
-{Juan Escamilla Molgora~\inst{1} ~\inst{2}}
+\subtitle{An Open Source graph-based computing framework for managing and modelling spatial ecological data}
+\author[Escamilla-Molgora et.al.] % (optional, for multiple authors)
+{Juan Escamilla Molgora~\inst{1} ~\inst{2}, Luigi Sedda~\inst{3}, Peter Atkinson~\inst{1}}
 \institute[Lancaster University] % (optional)
 {
   \inst{1}%
@@ -22,18 +24,21 @@
   \and
   \inst{2}%
   Data Science Institute
+  \and
+  \inst{3}
+  Faculty of Health and Medicine
 }
-\date[SPAT2017] % (optional)
+\date[SPATSTAT2017] % (optional)
 {Spatial Statistics Conference, 2017}
 \subject{Computer Science}
 
-
+\titlegraphic{\includegraphics[scale=0.6]{sponsors_logo.png}}
 
 
 % position the logo
 \addtobeamertemplate{frametitle}{}{%
 \begin{textblock*}{\paperwidth}(1cm,1cm)
-\includegraphics[height=1cm,width=1cm,keepaspectratio]{cat.jpeg}
+\includegraphics[height=1cm,width=1cm,keepaspectratio]{biospytial.png}
 \end{textblock*}}
 
 
@@ -44,73 +49,22 @@
 
 \section{Motivations}
 
-\begin{frame}
-		\frametitle{Why are ecosystems important?}
-		\begin{exampleblock}{Support}			
-				\begin{figure}				
-				\centering
-		    	\includegraphics[height=0.7\textheight,width=\textwidth]{forest1.jpeg}		    	    
-				\caption{Primary production}
-		    	\end{figure}
-		\end{exampleblock}
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Why are ecosystems important?}
-		\begin{exampleblock}{Support}			
-				\begin{figure}				
-				\centering
-		    	\includegraphics[height=0.7\textheight,width=\textwidth]{soil.jpg}		    	    
-				\caption{Soil production}
-		    	\end{figure}
-		\end{exampleblock}
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{We drink water and breathe air}
-		\begin{block}{Provisioning}
-				\begin{figure}				
-				\centering
-		    	\includegraphics[height=0.7\textheight,width=\textwidth]{tornetrask.jpg}		    	    
-				\caption{Water cycle and purification}
-		    	\end{figure}
-		\end{block}
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{We eat}
-		\begin{block}{Provisioning}
-				\begin{figure}				
-				\centering
-		    	\includegraphics[height=0.7\textheight,width=\textwidth]{food.jpg}		    	    
-				\caption{Food supply}
-		    	\end{figure}
-		\end{block}
-	\end{frame}
+\begin{frame}{Ecosystems support life in Earth}
+\begin{columns}[t]
+        \column{.5\textwidth}
+        \includegraphics[width=\columnwidth,height=2.5cm]{forest1.jpeg}
+        \captionof{figure}{primary production}
+        \includegraphics[width=\columnwidth,height=2.5cm]{em.png}
+        \captionof{figure}{Disease regulation}
+        \column{.5\textwidth}
+        \includegraphics[width=\columnwidth,height=2.5cm]{tornetrask.jpg}
+        \captionof{figure}{water cycle}
+        \includegraphics[width=\columnwidth,height=2.5cm]{food.jpg}
+        \captionof{figure}{food supply}
+\end{columns}
+\end{frame}
 
 
-	\begin{frame}
-		\frametitle{Self-regulating systems}
-		\begin{block}{Regulating Services}
-				\begin{figure}				
-				\centering
-		    	\includegraphics[height=0.7\textheight,width=\textwidth]{em.png}		    	    
-				\caption{Disease regulator }
-		    	\end{figure}
-		\end{block}
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{}
-		\begin{block}{Regulating services}
-				\begin{figure}				
-				\centering
-		    	\includegraphics<1>[height=0.7\textheight,width=\textwidth]{reg2.jpg}
-		    	\includegraphics<2>[height=0.7\textheight,width=\textwidth]{reg1.jpeg}		    	    
-				\caption{Energy and salt concentration }
-		    	\end{figure}
-		\end{block}
-	\end{frame}
 
 
 \subsection{Why modelling?}
@@ -141,18 +95,22 @@
 		\frametitle{Main question is ...}
 
 				\begin{columns}
-					\begin{column}{0.6\textwidth}
-						\begin{block}{Spatial regression of ecological networks}						
+					\begin{column}{0.4\textwidth}
+						\begin{alertblock}{Spatial regression of ecological networks}						
 						\begin{itemize}
 						\item<1> {\em Find the underlying process that shapes the "species"assemblages.}
 						\item<2> Infer the probability of assemblages of taxa for a given location.
+						\item[fig:]<3> {\small An interaction food web shows that fish have indirect effects on the populations of several species in and around ponds. }
 						\end{itemize}										
-					    \end{block}		
+					    \end{alertblock}		
 					\end{column}
 				
 			\begin{column}{0.5\textwidth}
+			\begin{figure}						
 			\centering
-		    \includegraphics[scale=0.6]{/home/juan/Research/proposals/FoodWeb.jpg}		
+		    \includegraphics[scale=0.4]{foodweb2.jpg}		
+		    \caption{{\small from Nature Education, 2012}}			
+			\end{figure}
 		    \end{column}    	    
 		\end{columns}
 	\end{frame}
@@ -161,24 +119,77 @@
 
 
 \section{Graph based Engine}
-\subsection{Architecture}
 \begin{frame}{Services and Modules}
-Put here diagram paper1
+
 \centering
-\includegraphics[scale=0.4]{biospytial-stack.png}
+\only<1>{\includegraphics[scale=0.3]{graph-model.png}}
+\only<2>{\includegraphics[scale=0.3]{graph-model2.png}}
+\only<3>{\includegraphics[scale=0.3]{graph-model3.png}}
+\end{frame}
+
+\subsection{Architecture}
+\begin{frame}{What is Biospytial ?}
+\begin{block}{A Graph engine}
+that integrates raster and vector data in explicit relational structures. (i.e. Networks / Graphs ).\\
+\centering
+\includegraphics[scale=0.35]{biospytial-stack.png}
+
+\end{block}
 \end{frame}
 \subsection{Supported Data}
 \begin{frame}
-\begin{block}
+\frametitle{Vector data (points,lines,(multi)-polygons}
+\begin{columns}
+	\begin{column}{0.3\textwidth}
+	\begin{block}{Attributes}						
+		\begin{itemize}
+	\item id: Integer 
+	\item species id : Integer
+	\item level: Integer
+	\item latitude / longitude: float
+	\item event date: DateTime
+	\item name: String
+	\item pk: 2406040
+	\item geom: WKT 
+	\item levelname: String
+\end{itemize}							
+	\end{block}		
+	\end{column}	
+			\begin{column}{0.7\textwidth}
+			\centering
+	\includegraphics[scale=0.5]{gbif.png} 
+	{\tiny GBIF (Global Biodiversity Information Facility) {\tt www.gbif.org} The data is a join effort in collecting all the publicly available data on biodiversity in the planet. This snapshot is from September, 2013}	
+		    \end{column}    	    
+		\end{columns}					
+	\end{frame}	
 
-\end{block}
-\end{frame}
-\subsection{Distributed Design}
-\begin{frame}
-\begin{block}
 
-\end{block}
+
+
+\begin{frame}{Environmental Data}
+\begin{columns}
+	\begin{column}{0.4\textwidth}
+\begin{block}{BioClim - Datasource}
+Bioclimatic variables derived from monthly data 1978 -  2000 \\(12 Months, 30arc res.)
+\begin{itemize}
+	\item Temperature (Max, Mean, Min)
+	\item Precipitation
+	\item Wind Speed
+	\item Vapor Pressure
+	\item Solar Radiation
+	\item DEM-based (Aspect, Slope, Height)
+\end{itemize}
+	\end{block}		
+	\end{column}
+	\begin{column}{0.6\textwidth}
+			\centering
+			\centering
+\animategraphics[controls,scale=0.2]{2}{meantemp-}{0}{11}
+{\tiny \\ Hijmans, R.J., S.E. Cameron, J.L. Parra, P.G. Jones and A. Jarvis, 2005. Very high resolution interpolated climate surfaces for global land areas. International Journal of Climatology 25: 1965-1978. * }
+\end{column}    	    
+		\end{columns}	
 \end{frame}
+
 \section{Algorithms}
 \begin{frame}
 \begin{block}
