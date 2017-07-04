@@ -191,34 +191,81 @@ Bioclimatic variables derived from monthly data 1978 -  2000 \\(12 Months, 30arc
 \end{frame}
 
 \section{Algorithms}
-\begin{frame}
-\begin{block}
 
-\end{block}
-\end{frame}
-\subsection{Tree of Life}
 \begin{frame}
-\begin{block}
+\frametitle{The taxonomy as a partial order $\leq$ }
+\begin{columns}[t]
+        \column{.5\textwidth}
+        \centering
+        \includegraphics[width=0.6\columnwidth,height=2.5cm]{mamalia.png}
+        \captionof{figure}{Common ancestor}
+		\centering		
+		\includegraphics[width=0.6\columnwidth,height=2.5cm]{build_tree.png}
+        \captionof{figure}{Tree structure}
+        \column{.5\textwidth}
+		\centering        
+        \includegraphics[width=0.6\columnwidth,height=2.5cm]{area_occs.png}
+        \captionof{figure}{Occurrences contained in:...}
+		\centering        
+        \includegraphics[width=0.6\columnwidth,height=2.5cm]{tree.png}
+        \captionof{figure}{A sub-tree of the Tree of Life}
+\end{columns}						
+	\end{frame}	
 
-\end{block}
-\end{frame}
-\subsection{Selecting Sub Trees}
-\begin{frame}
-\begin{block}
 
-\end{block}
-\end{frame}
 \subsection{Nested Grids}
+\subsubsection{Spatial Lattice}
 \begin{frame}
-\begin{block}
+\frametitle{spatial Semi-lattice }
+\begin{columns}[t]
+        \column{.5\textwidth}
+		\centering		
+		\includegraphics[width=0.6\columnwidth,height=2.5cm]{cell_neighbours.png}
+        \captionof{figure}{An area cell an its neighbours}
+        \centering
+        \includegraphics[width=0.6\columnwidth,height=2.5cm]{gridtest1.png}
+		\captionof{figure}{A lattice}           
+        \column{.5\textwidth}
+		\centering        
+        \includegraphics[width=0.6\columnwidth,height=2.5cm]{griddedtaxonomy.png}
+        \captionof{figure}{{\em On every cell a tree}}
+		\centering        
+        \includegraphics[width=0.6\columnwidth,height=2.5cm]{quadtree.png}
+        \captionof{figure}{Another tree across scale}
+\end{columns}						
+	\end{frame}	
 
+
+
+
+
+\subsection{Monoids on Trees}
+\begin{frame}{Tree operations}
+\begin{block}{Semigroup}
+Let $T$ be a set and $m : T \times T \rightarrow T $ be an associative binary operation\footnote{Meaning that if $t,p,q \in T$ then $m(m(t,p),q) = m(t,m(p,q))$ }. 
+The duple $(T,m)$ is called a semigroup and $T$ is called the underlying set of the semigroup.
+\end{block}
+
+\begin{block}{Identity element}
+Let $e \in T$ and $T$ a semigroup. $e$ is called {\em identity element} if and only if $te = et$ for all $t \in T$. There can only be at most one identity element in a semigroup.
 \end{block}
 \end{frame}
-\subsection{Monoids on Trees}
-\begin{frame}
-\begin{block}
 
-\end{block}
+\begin{frame}
+\begin{block}{Monoid}
+A {\em monoid} is a set that is {\bf closed} under the associative operation of a semigroup with an identity element.
+	\end{block}
+	The $+$ and $-$ operator of taxonomic trees are monoids.
+		\centering
+	\includegraphics[scale=1]{sum_monoid.png} 
+\end{frame}
+
+\begin{frame}{Operations}
+	\begin{block}{Other available operations}
+	\centering
+	\includegraphics<1>[scale=1.5]{operators.png} 
+
+	\end{block}
 \end{frame}
 \section{Demo}
 \begin{frame}{Some Demo}
